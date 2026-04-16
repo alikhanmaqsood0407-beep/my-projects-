@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Super Market</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            background: #f4f4f4;
+        }
+
+        header {
+            background: green;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        nav {
+            background: #333;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 10px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: yellow;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 15px;
+            width: 200px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px gray;
+        }
+
+        .card img {
+            width: 100%;
+            height: 150px;
+        }
+
+        button {
+            background: green;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: darkgreen;
+        }
+
+        #cart {
+            position: fixed;
+            right: 10px;
+            top: 80px;
+            background: white;
+            padding: 15px;
+            width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🛒 My Super Market</h1>
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Products</a>
+    <a href="#">Contact</a>
+</nav>
+
+<div class="container">
+    <h2>Products</h2>
+
+    <div class="products">
+        <div class="card">
+            <img src="https://via.placeholder.com/150">
+            <h3>Apples</h3>
+            <p>₹120</p>
+            <button onclick="addToCart('Apples',120)">Add</button>
+        </div>
+
+        <div class="card">
+            <img src="https://via.placeholder.com/150">
+            <h3>Milk</h3>
+            <p>₹50</p>
+            <button onclick="addToCart('Milk',50)">Add</button>
+        </div>
+
+        <div class="card">
+            <img src="https://via.placeholder.com/150">
+            <h3>Bread</h3>
+            <p>₹40</p>
+            <button onclick="addToCart('Bread',40)">Add</button>
+        </div>
+
+        <div class="card">
+            <img src="https://via.placeholder.com/150">
+            <h3>Rice</h3>
+            <p>₹60</p>
+            <button onclick="addToCart('Rice',60)">Add</button>
+        </div>
+    </div>
+</div>
+
+<div id="cart">
+    <h3>🛒 Cart</h3>
+    <ul id="cartItems"></ul>
+    <p><b>Total: ₹<span id="total">0</span></b></p>
+</div>
+
+<script>
+let total = 0;
+
+function addToCart(name, price) {
+    let cart = document.getElementById("cartItems");
+
+    let li = document.createElement("li");
+    li.innerHTML = name + " - ₹" + price;
+    cart.appendChild(li);
+
+    total += price;
+    document.getElementById("total").innerText = total;
+}
+</script>
+
+</body>
+</html>
